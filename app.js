@@ -3,7 +3,7 @@ const app = express();
 const port = 3000;
 
 // Import Routes
-const examGroupRoutes = require("./routes/examGroupRoutes");
+const examGroupRoutes = require("./routes/examroutes");
 
 // Use Routes
 app.use("/exam-group", examGroupRoutes);

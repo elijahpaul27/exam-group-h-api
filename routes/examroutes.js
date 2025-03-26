@@ -1,22 +1,27 @@
 const express = require("express");
 const router = express.Router();
 
-
-// Hardcoded list of exams
+// Hardcoded list of users
 const users = [
     { id: 1, name: "Alice", role: "Student" },
     { id: 2, name: "Bob", role: "Instructor" },
     { id: 3, name: "Charlie", role: "Admin" }
 ];
 
+// Hardcoded list of exams
+const exams = [
+    { id: 1, name: "Math Exam", date: "2025-04-10" },
+    { id: 2, name: "Science Exam", date: "2025-04-15" }
+];
+
+// Root API response
 router.get("/", (req, res) => {
     res.json({ message: "Group H API" });
 });
 
-
-// get exams users
-router.get('/exams', (req, res) => {
-       res.json(users)
+// GET /exams - Retrieve list of exams
+router.get("/exams", (req, res) => {
+    res.json(exams);
 });
 
 // POST /exams - Add a new exam
@@ -30,7 +35,7 @@ router.post("/exams", (req, res) => {
     const newExam = { id: exams.length + 1, name, date };
     exams.push(newExam);
 
-    res.status(201).json(newExam);
+    res.status(201).json({ message: "Exam added successfully!", exam: newExam });
 });
 
 // PUT /exams/:id - Update an existing exam
